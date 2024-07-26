@@ -1,0 +1,10 @@
+.category-btn{
+    border-radius: 10px;
+    padding: 3px 15px;
+}
+.list-scrollbar::-webkit-scrollbar{
+    display: none;
+}
+.react-player{
+    height: 100px;
+}
