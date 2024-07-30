@@ -8,3 +8,10 @@
 .react-player{
     height: 100px;
 }
+.description {
+    font-size: 14px;
+}
+.description a{
+    color: rgb(68, 68, 243) !important;
+    display: block !important;
+}

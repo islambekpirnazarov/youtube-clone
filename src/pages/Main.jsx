@@ -12,7 +12,9 @@ const Main = () => {
   useEffect(() => {
     ApiService.fetching(url, dispatch)
   }, [state.categoryData])
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Box>
         <Category/>

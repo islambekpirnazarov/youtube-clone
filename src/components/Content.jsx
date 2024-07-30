@@ -3,7 +3,7 @@ import React from 'react'
 
 const Content = ({children}) => {
   return (
-    <Box w={'94%'} mx={'auto'} maxW={'1440px'}>{children}</Box>
+    <Box w={{base : '97%', md : '94%'}} mx={'auto'} maxW={'1440px'}>{children}</Box>
   )
 }
 

@@ -23,7 +23,7 @@ const VideoCard = ({ video }) => {
           </Box>
         </Box>
         :
-        <Link to={`/video/${video?.id?.videoId || video?.id?.playlistId}`}>
+        <Link to={`/video/${video?.id?.videoId}`}>
           <Box lineHeight={'20px'} border={0} overflow={'hidden'}>
             <Box>
               <Image rounded={'12px'} src={video?.snippet?.thumbnails?.high?.url || video?.snippet?.thumbnails?.medium?.url || video?.snippet?.thumbnails?.default?.url} alt={video?.snippet?.title} w={{base : 'full', sm : '360px'}} h={'200px'} objectFit={'cover'} />

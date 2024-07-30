@@ -8,6 +8,7 @@ import VideoDetail from './pages/VideoDetail'
 import { MainContext } from './store/context'
 import { initialState, reducer } from './store/reducer'
 import Search from './pages/Search'
+import PlaylistDetails from './pages/PlaylistDetails'
 
 const route = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<MainLayouts />}>
@@ -15,6 +16,7 @@ const route = createBrowserRouter(createRoutesFromElements(
     <Route path='/channel/:id' element={<Channel />} />
     <Route path='/video/:id' element={<VideoDetail />} />
     <Route path='/search/:id' element={<Search/>} />
+    <Route path='/playlist/:id' element={<PlaylistDetails/>}/>
   </Route>
 ))
 

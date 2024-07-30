@@ -12,6 +12,9 @@ const Search = () => {
   useEffect(() => {
     ApiService.fetching(url, dispatch)
   }, [id])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <Videos/>
