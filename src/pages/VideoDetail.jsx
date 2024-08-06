@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MainContext } from '../store/context'
 import { ApiService } from '../service/api'
 import { Link, useParams } from 'react-router-dom'
-import { Box, Button, Heading, Image, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Image, Spinner, Text, useColorModeValue } from '@chakra-ui/react'
 import ReactPlayer from 'react-player'
 import '../App.css'
 import VideoCard from "../components/VideoCard";
@@ -26,6 +26,7 @@ const VideoDetail = () => {
   const commentUrl = `commentThreads?part=snippet&videoId=${id}`
   const [showComments, setShowComments] = useState(false)
   const [showDescription, setShowDescription] = useState(false)
+  const descriptionBg = useColorModeValue('gray.200', '#222')
 
   useEffect(() => {
     ApiService.getVideoDetails(url, dispatch)
@@ -56,7 +57,7 @@ const VideoDetail = () => {
   return (
     <Box key={state.videoDetails?.[0]?.id} my={'30px'} display={'flex'} flexDirection={{ base: 'column', md: 'row' }} gap={'20px'}>
 
-      <Box flex={'70%'}>
+      <Box flex={'70%'} width={'70%'}>
         <Box rounded={'20px'} h={{ base: '250px', sm: '400px', md: '500px' }} display={'flex'} alignItems={'center'} justifyContent={'center'}>
           {state.isVideosLoading ? <Spinner
             thickness='4px'
@@ -83,7 +84,7 @@ const VideoDetail = () => {
             <Box fontSize={{ base: '14px', md: '16px' }} fontWeight={'500'} display={'flex'} alignItems={'center'} gap={'5px'}><Box fontSize={'25px'}><AiOutlineLike /></Box> {parseInt(state.videoDetails?.[0]?.statistics?.likeCount).toLocaleString()} Likes</Box>
             <Box fontSize={{ base: '14px', md: '16px' }} fontWeight={'500'} display={'flex'} alignItems={'center'} gap={'5px'}><Box fontSize={'25px'}><BiComment /></Box> {parseInt(state.videoDetails?.[0]?.statistics?.commentCount).toLocaleString()} Comments</Box>
           </Box>
-          <Box my={'20px'} bg={'gray.200'} pos={'relative'} pt={'15px'} pl={'15px'} pr={'30px'} rounded={'15px'} noOfLines={!showDescription && 2}>
+          <Box my={'20px'} bg={descriptionBg} pos={'relative'} pt={'15px'} pl={'15px'} pr={'30px'} rounded={'15px'} noOfLines={!showDescription && 2}>
             <div className="description" dangerouslySetInnerHTML={{ __html: text }} />
             <Button onClick={() => setShowDescription(prev => prev ? !prev : !prev)} pos={'absolute'} top={!showDescription && '25px'} bottom={showDescription && 0} right={0} bg={'transparent'} _hover={{ bg: 'transparent' }}>{showDescription ? <Text>show less</Text> : <Text>more</Text>}</Button>
           </Box>
