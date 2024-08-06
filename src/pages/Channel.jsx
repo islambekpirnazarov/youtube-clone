@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { MainContext } from '../store/context'
 import { Box, Heading, Image, Spinner } from '@chakra-ui/react'
 import Videos from '../components/Videos'
+import moment from 'moment'
 
 const Channel = () => {
   const { id } = useParams()
@@ -47,7 +48,7 @@ const Channel = () => {
               </Box>
               <Box fontSize={{base : '14px', md : '16px'}}>{state.channelDetails[0]?.snippet.description}</Box>
               <Box fontSize={{base : '14px', md : '16px'}}>{parseInt(state.channelDetails[0]?.statistics.viewCount).toLocaleString()} views</Box>
-              <Box fontSize={{base : '14px', md : '16px'}}>Joined {state.channelDetails[0]?.snippet.publishedAt.slice(0, 10)}</Box>
+              <Box fontSize={{base : '14px', md : '16px'}}>Joined {moment(state.channelDetails[0]?.snippet.publishedAt).format('DD MMMM  YYYY')}</Box>
             </Box>
           </Box>
         </Box>}
